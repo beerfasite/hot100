@@ -1,4 +1,6 @@
-dp = [[0] * 4  for _ in range(3) ]
+from collections import Counter
 
+num = [1,2,3,4,5,5,5,5]
 
-print(dp)
+cnt = Counter(num)
+print(cnt)
