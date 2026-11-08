@@ -1,2 +1,7 @@
-ls = [[0] * 3 for _ in range(4)]
-print(ls)
+m = 3
+n = 2
+
+
+vis = [[False] * m for _ in range(n)]
+
+print(vis)
