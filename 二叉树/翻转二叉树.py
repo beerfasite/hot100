@@ -5,11 +5,14 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    """后序遍历"""
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+
         if root is None:
-            return
-        left = self.invertTree(root.left)
-        right = self.invertTree(root.right)
-        root.right,root.left = left,right
+            return 
+        root.left = self.invertTree(root.left)
+        root.right = self.invertTree(root.right)
+
+        root.left,root.right = root.right,root.left
 
         return root
