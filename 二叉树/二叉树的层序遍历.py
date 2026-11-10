@@ -9,9 +9,9 @@ class Solution:
         if root is None:
             return []
 
+        q = deque([root])
         ans = []
 
-        q = deque([root])
         while q:
             vals = []
             for _ in range(len(q)):

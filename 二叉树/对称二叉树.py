@@ -5,13 +5,24 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+    def func(self,u,v):
+        q = deque()
+        q.append(u)
+        q.append(v)
+
+        while q:
+            u = q.popleft()
+            v = q.popleft()
+            if not u and not v:
+                continue
+            if (not u or not v) or (u.val != v.val):
+                return False
+
+            q.append(u.left)
+            q.append(v.right)
+            q.append(u.right)
+            q.append(v.left)
+        return True
+    
     def isSymmetric(self, root: TreeNode | None) -> bool:
-        def func(left,right):
-                if left is None and right is None:
-                    return True
-                if left is None and right is not None:
-                    return False
-                if left is not None and right is None:
-                    return False
-                return left.val == right.val and func(left.left,right.right) and func(left.right,right.left)
-        return func(root.left,root.right)
+        return self.func(root,root)    
