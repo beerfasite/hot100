@@ -5,20 +5,24 @@
 #         self.left = left
 #         self.right = right
 class Solution:
+
+    def func(self,root):
+        if root is None:
+            return 
+        self.res.append(root)
+        self.func(root.left)
+        self.func(root.right)
+
+
     def flatten(self, root: TreeNode | None) -> None:
         """
         Do not return anything, modify root in-place instead.
         """
-        res = []
+        self.res = []
+        self.func(root)
 
-        def preorder(root):
-            if root:
-                res.append(root)
-                preorder(root.left)
-                preorder(root.right)
-        
-        preorder(root)
-        for i in range(1,len(res)):
-            l,r = res[i - 1],res[i]
-            l.left = None
-            l.right = r
+        for i in range(1,len(self.res)):
+            left = self.res[i - 1]
+            right = self.res[i]
+            left.left = None
+            left.right = right
